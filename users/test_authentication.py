@@ -7,7 +7,7 @@ User = get_user_model()
 class AuthenticationTests(TestCase):
     def setUp(self):
         """Set up test user"""
-        self.user = User.objects.create_user(username='testuser', password='Test@1234')
+        self.user = User.objects.create_user(username='testuser', email="testuser@example.com", password='Test@1234')
         self.login_url = reverse('login')
         self.logout_url = reverse('logout')
         self.protected_url = reverse('dashboard')
