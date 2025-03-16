@@ -1,6 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.db import models
 from users.models import CustomUser
+from datetime import time
 
 PRACTICE_AREAS = [
     ("civil", "Civil Law"),
@@ -12,8 +13,8 @@ PRACTICE_AREAS = [
 class LawyerProfile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)
     practice_area = models.CharField(max_length=20, choices=PRACTICE_AREAS)
-    available_from = models.TimeField()
-    available_to = models.TimeField()
+    available_from = models.TimeField(default=time(9, 0)) # Default = 9:00 AM
+    available_to = models.TimeField(default=time(17, 0)) # Default = 5:00 PM
 
     def clean(self):
         """Ensures only users in the lawyer group can have a LawyerProfile."""
