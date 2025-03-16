@@ -9,7 +9,6 @@ def register(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.is_lawyer = form.cleaned_data['is_lawyer']
             user.save()
             login(request, user)
             return redirect('dashboard')
