@@ -22,6 +22,7 @@ jobs:
           printf "POSTGRES_DB=%s\n" "${{ secrets.POSTGRES_DB }}" >> .env
           printf "POSTGRES_USER=%s\n" "${{ secrets.POSTGRES_USER }}" >> .env
           printf "POSTGRES_PASSWORD=%s\n" "${{ secrets.POSTGRES_PASSWORD }}" >> .env
+          printf "ALLOWED_HOSTS=%s\n" "${{ secrets.ALLOWED_HOSTS }}" >> .env
 
       - name: Run Django tests with Docker Compose
         run: docker compose -f docker-compose.test.yml up --abort-on-container-exit --exit-code-from web
