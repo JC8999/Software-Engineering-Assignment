@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser, Group
 from django.db import models
+from .managers import CustomUserManager
 
 class CustomUser(AbstractUser):
     ROLE_CHOICES = (
@@ -12,6 +13,8 @@ class CustomUser(AbstractUser):
     last_name = models.CharField(max_length=30)
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=15, unique=True)
+
+    objects = CustomUserManager()
 
     def assign_group(self):
         """Assigns users to the correct group based on role, but keeps superusers out of a group by giving them an admin role."""
