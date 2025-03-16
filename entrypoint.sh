@@ -14,5 +14,5 @@ else:
     print("Superuser already exists.")
 EOF
 
-echo "Starting server..."
+echo "Starting Gunicorn..."
 exec "$@"

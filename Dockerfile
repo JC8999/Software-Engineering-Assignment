@@ -10,4 +10,4 @@ RUN chmod +x /entrypoint.sh
 ENV DJANGO_SETTINGS_MODULE=atlas_law.settings
 EXPOSE 8000
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["gunicorn", "atlas_law.wsgi:application", "--bind", "0.0.0.0:8000"]
