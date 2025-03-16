@@ -28,7 +28,7 @@ jobs:
         run: docker compose -f docker-compose.test.yml up --abort-on-container-exit --exit-code-from web
 
       - name: Clean up Docker Compose
-        run: docker-compose -f docker-compose.test.yml down
+        run: docker compose -f docker-compose.test.yml down
 
   deploy:
     needs: test
