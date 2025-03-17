@@ -18,9 +18,17 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    # Admin Panel
     path('admin/', admin.site.urls),
-    path('', include('core.urls')),
-    path('users/', include('users.urls')),
+
+    # Web Pages
+    path('', include('core.urls')), # Static Pages
+    path('users/', include('users.urls')), # Authentication
     #path('lawyers/', include('lawyers.urls')),
     #path('appointments/', include('appointments.urls')),
+
+    # REST API URLs
+    path('api/users/', include('users.api_urls')),  
+    path('api/lawyers/', include('lawyers.api_urls')), 
+    path('api/appointments/', include('appointments.api_urls')),
 ]
